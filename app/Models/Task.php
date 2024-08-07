@@ -19,7 +19,6 @@ class Task extends Model
     ];
 
     /**
-     * Get the user that owns the Task
      * Obtener el usuario al que pertenece la tarea
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -27,7 +26,7 @@ class Task extends Model
     public function user(): BelongsTo
     {
         // Define una relación de pertenencia con el modelo User.
-        // Esto indica que una tarea está asociada con un único usuario.
+        // Relación inversa, esto indica que una tarea está asociada con un único usuario.
         return $this->belongsTo(User::class);
     }
 }

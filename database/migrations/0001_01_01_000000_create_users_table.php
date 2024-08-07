@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
-            //add soft delete
+            //add soft delete column to the table
             $table->softDeletes();
         });
 
