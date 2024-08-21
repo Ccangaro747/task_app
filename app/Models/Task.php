@@ -23,10 +23,8 @@ class Task extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function user(): BelongsTo
+    public function user()
     {
-        // Define una relación de pertenencia con el modelo User.
-        // Relación inversa, esto indica que una tarea está asociada con un único usuario.
         return $this->belongsTo(User::class);
     }
 }

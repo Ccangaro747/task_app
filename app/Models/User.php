@@ -69,10 +69,9 @@ class User extends Authenticatable
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function tasks(): HasMany
+    public function tasks()
     {
-        // Define una relación de uno a muchos con el modelo Task.
-        // Esto indica que un usuario puede tener muchas tareas.
         return $this->hasMany(Task::class);
     }
+
 }

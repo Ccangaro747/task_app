@@ -19,18 +19,27 @@
                         </thead>
                         <tbody>
 
+                            @if(Auth::user()->tasks->isNotEmpty())
+                            @foreach (Auth::user()->tasks as $task)
                             <tr>
                                 <td class="px-2 py-5 text-base font-medium text-center text-gray-300 bg-gray-800 border-gray-700">
-
+                                    {{ $task->title }}
                                 </td>
                                 <td class="px-2 py-5 text-base font-medium text-center text-gray-300 bg-gray-700 border-gray-700">
-
+                                    {{ $task->description }}
                                 </td>
                                 <td class="px-2 py-5 text-base font-medium text-center text-gray-300 bg-gray-800 border-gray-700">
-                                    
+                                    <!-- Agregar acciones aquí -->
                                 </td>
                             </tr>
-
+                            @endforeach
+                            @else
+                            <tr>
+                                <td colspan="3" class="px-2 py-5 text-base font-medium text-center text-gray-300 bg-gray-800 border-gray-700">
+                                    No hay tareas disponibles.
+                                </td>
+                            </tr>
+                            @endif
                         </tbody>
                     </table>
                 </div>
