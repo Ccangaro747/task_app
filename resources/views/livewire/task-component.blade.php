@@ -38,7 +38,8 @@
                                         wire:click="openEditModal({{ $task->id }})">
                                         Editar
                                     </button>
-                                    <button class="px-4 py-2 text-white bg-red-500 rounded-md hover:bg-red-400">
+                                    <button class="px-4 py-2 text-white bg-red-500 rounded-md hover:bg-red-400"
+                                        wire:click="deleteTask({{ $task->id }})">
                                         Borrar
                                     </button>
                                 </td>

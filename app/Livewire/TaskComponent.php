@@ -11,7 +11,7 @@ class TaskComponent extends Component
     public $title;
     public $description;
     public $modal = false;
-    public $editingTaskId = null; // Añadido para editar tareas
+    public $editingTaskId = null;
 
     public function mount()
     {
@@ -32,7 +32,7 @@ class TaskComponent extends Component
     public function openCreateModal()
     {
         $this->clearFields();
-        $this->editingTaskId = null; // Limpia la ID de la tarea que se está editando
+        $this->editingTaskId = null;
         $this->modal = true;
     }
 
@@ -55,7 +55,6 @@ class TaskComponent extends Component
     public function saveTask()
     {
         if ($this->editingTaskId) {
-            // Editar tarea existente
             $task = Task::find($this->editingTaskId);
             if ($task) {
                 $task->title = $this->title;
@@ -63,7 +62,6 @@ class TaskComponent extends Component
                 $task->save();
             }
         } else {
-            // Crear nueva tarea
             $newTask = new Task();
             $newTask->title = $this->title;
             $newTask->description = $this->description;
@@ -73,6 +71,15 @@ class TaskComponent extends Component
 
         $this->clearFields();
         $this->modal = false;
-        $this->tasks = Task::where('user_id', auth()->user()->id)->get(); 
+        $this->tasks = Task::where('user_id', auth()->user()->id)->get();
+    }
+
+    public function deleteTask($taskId)
+    {
+        $task = Task::find($taskId);
+        if ($task) {
+            $task->delete();
+            $this->tasks = Task::where('user_id', auth()->user()->id)->get();
+        }
     }
 }
